@@ -1,5 +1,6 @@
+//function for delaying the launch of js before HTMl is full loaded.
 document.addEventListener('DOMContentLoaded', function () {
-  // Function to update total price
+  // Function for updateing total price of the items
   function updateTotal() {
     let total = 0;
     const prices = document.querySelectorAll('.unit-price');
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('total').textContent = `${total} $`;
   }
 
-  // Adding event listeners for all plus and minus buttons
+  // Adding the event listeners for all plus buttons
   document.querySelectorAll('.fa-plus-circle').forEach((button) => {
     button.addEventListener('click', function () {
       const quantitySpan = this.nextElementSibling;
@@ -20,7 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateTotal();
     });
   });
-
+  // Adding the event listeners for all minus buttons
   document.querySelectorAll('.fa-minus-circle').forEach((button) => {
     button.addEventListener('click', function () {
       const quantitySpan = this.previousElementSibling;
@@ -40,15 +41,13 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Add event listeners for all heart buttons (for adding to favorites, functionality to be implemented)
+  // Adding event listeners for all heart buttons to add the favourite item
   document.querySelectorAll('.fa-heart').forEach((button) => {
     button.addEventListener('click', function () {
       this.classList.toggle('text-danger');
-    //   // Implement your favorite functionality here
-    //   alert('Added to favorites!');
     });
   });
 
-  // Initial total price update
+  // Total price update function
   updateTotal();
 });
