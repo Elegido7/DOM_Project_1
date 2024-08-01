@@ -1,6 +1,6 @@
 //function for delaying the launch of js before HTMl is full loaded.
 document.addEventListener('DOMContentLoaded', function () {
-  // Function for updateing total price of the items
+  // Function for updating total price of the items
   function updateTotal() {
     let total = 0;
     const prices = document.querySelectorAll('.unit-price');
