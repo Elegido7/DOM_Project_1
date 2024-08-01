@@ -10,3 +10,5 @@ Instructions
     Like items through a clickable heart-shaped button that will change color accordingly.
     See the total price adjusted according to quantity and deletions.
 
+The design of the card has been nodified with the add, minus and text color changed to make it more appealing.
+The navbar has been modified with different colors, font size and positioned fixed.
