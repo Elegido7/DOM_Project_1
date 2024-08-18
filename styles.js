@@ -1,4 +1,3 @@
-//function for delaying the launch of js before HTMl is full loaded.
 document.addEventListener('DOMContentLoaded', function () {
   // Function for updating total price of the items
   function updateTotal() {
@@ -7,7 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const quantities = document.querySelectorAll('.quantity');
 
     prices.forEach((price, index) => {
-      total += parseFloat(price.textContent) * parseInt(quantities[index].textContent);
+      total +=
+        parseFloat(price.textContent) * parseInt(quantities[index].textContent);
     });
 
     document.getElementById('total').textContent = `${total} $`;
@@ -21,6 +21,7 @@ document.addEventListener('DOMContentLoaded', function () {
       updateTotal();
     });
   });
+
   // Adding the event listeners for all minus buttons
   document.querySelectorAll('.fa-minus-circle').forEach((button) => {
     button.addEventListener('click', function () {
@@ -36,8 +37,22 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.fa-trash-alt').forEach((button) => {
     button.addEventListener('click', function () {
       const productCard = this.closest('.card-body');
-      productCard.remove();
-      updateTotal();
+      const price = parseFloat(
+        productCard.querySelector('.unit-price').textContent
+      );
+      const quantity = parseInt(
+        productCard.querySelector('.quantity').textContent
+      );
+      const currentTotal = parseFloat(
+        document.getElementById('total').textContent
+      );
+
+      // Update the total by subtracting the product's total price
+      const updatedTotal = currentTotal - price * quantity;
+      document.getElementById('total').textContent = `${updatedTotal} $`;
+
+      // Optionally, clear quantity to 0 and update the UI accordingly (instead of removing the card)
+      productCard.querySelector('.quantity').textContent = 0;
     });
   });
 
